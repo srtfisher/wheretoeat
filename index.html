@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="wheretoeat">
+  <head>
+    <title>Find Something to Eat</title>
+
+    <!-- Stylesheets -->
+    <link href="application/vendor/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+
+    <link href="//api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.css" rel="stylesheet" />
+
+    <!-- Scripts -->
+    <script src="//api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.js"></script>
+    <script data-main="application/loader" src="application/vendor/requirejs/require.js"></script>
+  </head>
+  <body ng-controller="AppCtrl">
+      <div ng-controller="MapCtrl">
+        <leaflet></leaflet>
+      </div>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+{
+  "name": "frontend-proto",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/srtfisher/frontend-proto.git"
+  },
+  "author": "Sean Fisher <hi@seanfisher.co>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/srtfisher/frontend-proto/issues"
+  },
+  "homepage": "https://github.com/srtfisher/frontend-proto",
+  "dependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-coffee": "^0.12.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "load-grunt-tasks": "^1.0.0"
+  }
+}
