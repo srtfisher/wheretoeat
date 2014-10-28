@@ -4,8 +4,9 @@
     <title>Find Something to Eat</title>
 
     <!-- Stylesheets -->
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400italic,400' rel='stylesheet' type='text/css'>
     <link href="application/vendor/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
-
+    <link href="stylesheets/main.css" rel="stylesheet" />
     <link href="//api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.css" rel="stylesheet" />
 
     <!-- Scripts -->
@@ -13,8 +14,21 @@
     <script data-main="application/loader" src="application/vendor/requirejs/require.js"></script>
   </head>
   <body ng-controller="AppCtrl">
-      <div ng-controller="MapCtrl">
-        <leaflet></leaflet>
+    <div ng-controller="MapCtrl">
+      <!-- Overlay -->
+      <div class="search-container">
+        <h3 class="panel-title">Where to Eat?</h3>
+
+        <p>
+          Ever wonder where to eat when you're in the mood? Want to see where
+          the best places to eat are on a map? You're in luck, this does just that.
+        </p>
       </div>
+
+      <!-- Map -->
+      <div class="mapbox-container">
+        <leaflet center="center" url-hash-center="yes" width="100%" id="mapbox-leaf" tiles="tiles"></leaflet>
+      </div>
+    </div>
   </body>
 </html>

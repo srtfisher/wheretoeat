@@ -13,11 +13,20 @@ module.exports = (grunt) ->
         files: [
           'application/*.coffee'
           'application/**/*.coffee'
+          'stylesheets/*.scss'
         ]
-        tasks: ['coffee']
+        tasks: ['coffee:application', 'sass:application']
         options:
           reload: true
 
-  grunt.registerTask 'default', ['coffee:application', 'watch']
+    sass:
+      application:
+        files: 'stylesheets/main.css': 'stylesheets/main.scss'
+
+  grunt.registerTask 'default', [
+    'coffee:application'
+    'sass:application'
+    'watch'
+  ]
   # Load the grunt tasks
   require('load-grunt-tasks') grunt
