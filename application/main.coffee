@@ -46,6 +46,7 @@ define [
           foodCategories = _.find data.response.categories, (section) ->
             section.name == 'Food'
 
+          $scope.baseFoodCategory = foodCategories.id
           $scope.categories = foodCategories.categories
         .error ->
           console.error 'Unable to load Foursquare Categories'
@@ -65,7 +66,7 @@ define [
       $scope.loadPlaces = ->
         return if $scope.working
 
-        # console.log item, model, $scope.search
+        # Apply timeout after 300ms
         window.loadPlaceTimeout = setTimeout ->
           # Ensure no stacking of timeouts
           clearTimeout window.loadPlaceTimeout
@@ -75,7 +76,14 @@ define [
           params =
             limit: 50
             radius: 8000
+            intent: 'browse'
+
+          # Build the categories
           categoryIds = _.pluck $scope.search, 'id'
+
+          # If there are no categories, limit the results to just food
+          unless categoryIds.length
+            categoryIds.push $scope.baseFoodCategory
 
           if $scope.center?
             params.ll = $scope.center.lat + ',' + $scope.center.lng
@@ -90,19 +98,26 @@ define [
 
             # Format foursquare venue to marker
             _.each data.response.venues, (venue) ->
-              console.log venue, $scope.places
+              console.log venue
+              foursquareUrl = 'https://foursquare.com/v/venue/' + venue.id
+              foursquareUrl += '?referralId=' + venue.referralId
+
+              # Build a marker message
+              message = '<h6><a href="' + foursquareUrl + '" target="_blank">' + venue.name + '</a></h6>'
+
+              if venue.url?
+                message += '<br><a href="' + venue.url + '" target="_blank">(Visit Site)</a>'
+
               $scope.places[venue.id] =
                 lat: venue.location.lat
                 lng: venue.location.lng
-                message: venue.name
+                message: message
                 focus: false
 
             $scope.working = false
           .error ->
             console.error 'Erroring search Foursquare API'
-        , 1000
-
-
+        , 300
 
       # Map Logic
       $scope.center =
