@@ -1,0 +1,34 @@
+html, body {
+  background: #eef1f4;
+  font-family: 'Open Sans', sans-serif; }
+
+.mapbox-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 100; }
+  .mapbox-container #mapbox-leaf {
+    position: absolute !important;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0; }
+
+.search-container {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  width: 350px;
+  max-width: 100%;
+  padding: 20px;
+  z-index: 200;
+  background: white; }
+  .search-container .panel-title {
+    font: 400 28px/1.5 'Montserrat', sans-serif;
+    margin: 0 0 20px;
+    text-transform: uppercase; }
+  .search-container p {
+    font-size: 13px;
+    color: #666; }

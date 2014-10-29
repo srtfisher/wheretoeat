@@ -1,6 +1,2 @@
-application/vendor
-application/*.js
 node_modules/
 .sass-cache/
-stylesheets/*
-!stylesheets/*.scss
