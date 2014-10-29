@@ -5,6 +5,7 @@ module.exports = (grunt) ->
         files:
           'application/loader.js': 'application/loader.coffee'
           'application/main.js': 'application/main.coffee'
+          'application/service.js': 'application/service.coffee'
         options:
           bare: true
 

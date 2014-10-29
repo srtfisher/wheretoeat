@@ -6,6 +6,9 @@
     <!-- Stylesheets -->
     <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400italic,400' rel='stylesheet' type='text/css'>
     <link href="application/vendor/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="application/vendor/angular-ui-select/dist/select.min.css" rel="stylesheet" />
+    <link href="application/vendor/angular-loading-bar/build/loading-bar.css" rel="stylesheet" />
+
     <link href="stylesheets/main.css" rel="stylesheet" />
     <link href="//api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.css" rel="stylesheet" />
 
@@ -14,7 +17,7 @@
     <script data-main="application/loader" src="application/vendor/requirejs/require.js"></script>
   </head>
   <body ng-controller="AppCtrl">
-    <div ng-controller="MapCtrl">
+    <div ng-controller="MapCtrl" ng-cloak>
       <!-- Overlay -->
       <div class="search-container">
         <h3 class="panel-title">Where to Eat?</h3>
@@ -23,11 +26,31 @@
           Ever wonder where to eat when you're in the mood? Want to see where
           the best places to eat are on a map? You're in luck, this does just that.
         </p>
+
+        <ui-select
+          ng-cloak
+          multiple
+          ng-model="$parent.search"
+          theme="bootstrap"
+          ng-disabled="working"
+          sssssssssson-select="loadPlaces($item, $model)">
+          <ui-select-match placeholder="Select categories...">{{$item.name}}</ui-select-match>
+          <ui-select-choices repeat="category in categories | filter: $select.search">
+            {{ category.name }}
+            <!-- <span ng-bind-html="category.name | highlight: $select.search"></span> -->
+          </ui-select-choices>
+        </ui-select>
       </div>
 
       <!-- Map -->
       <div class="mapbox-container">
-        <leaflet center="center" url-hash-center="yes" width="100%" id="mapbox-leaf" tiles="tiles"></leaflet>
+        <leaflet
+          center="center"
+          url-hash-center="yes"
+          width="100%"
+          id="mapbox-leaf"
+          markers="places"
+          tiles="tiles"></leaflet>
       </div>
     </div>
   </body>

@@ -12,6 +12,10 @@ requirejs.config
     domReady: './vendor/requirejs-domready/domReady'
     leaflet: './vendor/leaflet/leaflet'
     angularLeaflet: './vendor/angular-leaflet-directive/dist/angular-leaflet-directive'
+    angularResource: './vendor/angular-resource/angular-resource'
+    angularUiSelect: './vendor/angular-ui-select/dist/select.min'
+    angularLoadBar: './vendor/angular-loading-bar/build/loading-bar.min'
+    angularAnimate: './vendor/angular-animate/angular-animate'
 
   shim:
     angular:
@@ -20,8 +24,14 @@ requirejs.config
       deps: ['jquery']
     angularLeaflet:
       deps: ['angular']
-    restangular:
+    angularResource:
+      deps: ['angular']
+    angularUiSelect:
       deps: ['angular', 'underscore']
+    angularLoadBar:
+      deps: ['angular']
+    angularAnimate:
+      deps: ['angular']
 
   priority: [
     'angular'
